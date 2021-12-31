@@ -346,6 +346,7 @@ zulipFirstStartInit() {
     fi
     local RETURN_CODE=0
     set +e
+    crudini --set /etc/zulip/zulip.conf postgresql missing_dictionaries true
     su zulip -c /home/zulip/deployments/current/scripts/setup/initialize-database
     RETURN_CODE=$?
     if [[ $RETURN_CODE != 0 ]]; then
